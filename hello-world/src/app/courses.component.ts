@@ -45,6 +45,8 @@ import { CoursesService } from './courses.service';
             <li>{{ course.price | currency:"IDR":"Rp. ":"3.4-4" }}</li>
             <li>{{ course.releaseDate | date:'yyyy-MM-dd hh:mm:ss' }}</li>
         </ul>
+
+        Text: {{ text | summary:11 }}
     `,
     styles: []
 })
@@ -63,6 +65,7 @@ export class CoursesComponent {
         price: 190.95,
         releaseDate: new Date(2016, 3, 1)
     }
+    text: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
     constructor(service: CoursesService){
         this.courses = service.getCourses();
