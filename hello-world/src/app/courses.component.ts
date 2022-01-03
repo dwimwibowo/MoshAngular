@@ -26,7 +26,12 @@ import { CoursesService } from './courses.service';
             </tr>
         </table>
 
-        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary" [class.active]="isActive">Class Binding</button>
+        <button class="btn btn-danger" [style.backgroundColor]="isActive ? 'blue' : 'white'">Style Binding</button>
+        <button class="btn btn-secondary">Normal</button>
+        <div (click)="onDivClicked()">
+            <button class="btn btn-warning" (click)="onSave($event)">Event Binding</button>
+        </div>
     `,
     styles: []
 })
@@ -35,6 +40,7 @@ export class CoursesComponent {
     title: string = "List of courses";
     imageUrl: string = "http://picsum.photos/400/200";
     colSpan: number = 2;
+    isActive: boolean = true;
     courses;
 
     constructor(service: CoursesService){
@@ -43,5 +49,16 @@ export class CoursesComponent {
     
     getTitle(){
         return this.title;
+    }
+
+    onDivClicked(){
+        console.log("Div was clicked");
+    }
+
+    onSave($event: any){
+        $event.stopPropagation();
+
+        console.log("Button was clicked", $event);
+        alert("Button was clicked");
     }
 }
