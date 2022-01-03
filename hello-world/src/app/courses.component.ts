@@ -37,6 +37,14 @@ import { CoursesService } from './courses.service';
         <input (keyup.enter)="onKeyUpEnterValue($event)" />
         <input #email (keyup.enter)="onKeyUpEnterValueVariable(email.value)" />
         <input [(ngModel)]="emailVar" (keyup.enter)="onKeyUpEnterValueVariableBinding()" />
+
+        <ul>
+            <li>{{ course.title | uppercase | lowercase }}</li>
+            <li>{{ course.students | number }}</li>
+            <li>{{ course.rating | number:'2.2-2' }}</li>
+            <li>{{ course.price | currency:"IDR":"Rp. ":"3.4-4" }}</li>
+            <li>{{ course.releaseDate | date:'yyyy-MM-dd hh:mm:ss' }}</li>
+        </ul>
     `,
     styles: []
 })
@@ -46,8 +54,15 @@ export class CoursesComponent {
     imageUrl: string = "http://picsum.photos/400/200";
     colSpan: number = 2;
     isActive: boolean = true;
-    courses;
     emailVar: string = "me@example.com";
+    courses;
+    course = {
+        title: "The Complete Angular Course",
+        rating: 4.9745,
+        students: 30123,
+        price: 190.95,
+        releaseDate: new Date(2016, 3, 1)
+    }
 
     constructor(service: CoursesService){
         this.courses = service.getCourses();
