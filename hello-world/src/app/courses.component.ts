@@ -32,6 +32,8 @@ import { CoursesService } from './courses.service';
         <div (click)="onDivClicked()">
             <button class="btn btn-warning" (click)="onSave($event)">Event Binding</button>
         </div>
+        <input (keyup)="onKeyUp($event)" />
+        <input (keyup.enter)="onKeyUpEnter()" />
     `,
     styles: []
 })
@@ -60,5 +62,14 @@ export class CoursesComponent {
 
         console.log("Button was clicked", $event);
         alert("Button was clicked");
+    }
+
+    onKeyUp($event: any){
+        if($event.keyCode === 13)
+            console.log("Enter key pressed");
+    }
+
+    onKeyUpEnter(){
+        console.log("Enter key pressed");
     }
 }
