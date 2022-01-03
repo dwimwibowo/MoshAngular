@@ -25,6 +25,8 @@ import { CoursesService } from './courses.service';
                 <td>2</td>
             </tr>
         </table>
+
+        <button class="btn btn-primary">Save</button>
     `,
     styles: []
 })
