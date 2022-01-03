@@ -1,2 +1,5 @@
 <h1>Angular</h1>
-<favorite [isFavorite]="post.isFavorite"></favorite>
+<favorite
+    [isFavorite]="post.isFavorite"
+    (change)="onFavoriteChanged($event)"
+    ></favorite>
