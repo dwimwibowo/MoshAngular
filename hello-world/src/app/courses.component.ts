@@ -36,6 +36,7 @@ import { CoursesService } from './courses.service';
         <input (keyup.enter)="onKeyUpEnter()" />
         <input (keyup.enter)="onKeyUpEnterValue($event)" />
         <input #email (keyup.enter)="onKeyUpEnterValueVariable(email.value)" />
+        <input [(ngModel)]="emailVar" (keyup.enter)="onKeyUpEnterValueVariableBinding()" />
     `,
     styles: []
 })
@@ -46,6 +47,7 @@ export class CoursesComponent {
     colSpan: number = 2;
     isActive: boolean = true;
     courses;
+    emailVar: string = "me@example.com";
 
     constructor(service: CoursesService){
         this.courses = service.getCourses();
@@ -81,5 +83,9 @@ export class CoursesComponent {
 
     onKeyUpEnterValueVariable(email: any){
         console.log(email);
+    }
+
+    onKeyUpEnterValueVariableBinding(){
+        console.log(this.emailVar);
     }
 }
