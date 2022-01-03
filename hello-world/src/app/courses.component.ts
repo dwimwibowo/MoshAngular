@@ -34,6 +34,8 @@ import { CoursesService } from './courses.service';
         </div>
         <input (keyup)="onKeyUp($event)" />
         <input (keyup.enter)="onKeyUpEnter()" />
+        <input (keyup.enter)="onKeyUpEnterValue($event)" />
+        <input #email (keyup.enter)="onKeyUpEnterValueVariable(email.value)" />
     `,
     styles: []
 })
@@ -71,5 +73,13 @@ export class CoursesComponent {
 
     onKeyUpEnter(){
         console.log("Enter key pressed");
+    }
+
+    onKeyUpEnterValue($event: any){
+        console.log($event.target.value);
+    }
+
+    onKeyUpEnterValueVariable(email: any){
+        console.log(email);
     }
 }
