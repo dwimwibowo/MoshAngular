@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CoursesComponent } from './courses.component';
 import { CourseComponent } from './course/course.component';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { PanelComponent } from './panel/panel.component';
 
 import { CoursesService } from './courses.service';
 
@@ -16,8 +17,9 @@ import { SummaryPipe } from './summary.pipe';
     AppComponent,
     CoursesComponent,
     CourseComponent,
-    SummaryPipe,
-    FavoriteComponent
+    FavoriteComponent,
+    PanelComponent,
+    SummaryPipe
   ],
   imports: [
     BrowserModule,
