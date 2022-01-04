@@ -4,3 +4,12 @@
   [class.bi-star]="!isSelected"
   (click)="onClick()"
   ></span>
+
+<span
+  class="bi"
+  [ngClass]="{
+    'bi-star-fill': isSelected,
+    'bi-star': !isSelected
+  }"
+  (click)="onClick()"
+  ></span>
