@@ -7,6 +7,7 @@ import { CoursesComponent } from './courses.component';
 import { CourseComponent } from './course/course.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { PanelComponent } from './panel/panel.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 import { CoursesService } from './courses.service';
 
@@ -21,6 +22,7 @@ import { InputFormatDirective } from './input-format.directive';
     CourseComponent,
     FavoriteComponent,
     PanelComponent,
+    ContactFormComponent,
     SummaryPipe,
     InputFormatDirective
   ],
