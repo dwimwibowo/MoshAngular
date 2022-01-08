@@ -9,20 +9,22 @@ import { UsernameValidators } from './username.validators';
 })
 export class SignupFormComponent {
   form = new FormGroup({
-    username: new FormControl(
-      '',
-      [
-        Validators.required,
-        Validators.minLength(3),
-        UsernameValidators.cannotContainSpace
-      ],
-      UsernameValidators.shouldBeUnique // async validator
-    ),
-    password: new FormControl('', Validators.required)
+    account: new FormGroup({
+      username: new FormControl(
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          UsernameValidators.cannotContainSpace
+        ],
+        UsernameValidators.shouldBeUnique // async validator
+      ),
+      password: new FormControl('', Validators.required)
+    })
   });
 
   get username(){
-    return this.form.get('username');
+    return this.form.get('account.username');
   }
 
   login(){
