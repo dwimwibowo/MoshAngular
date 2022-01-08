@@ -15,6 +15,7 @@ import { CoursesService } from './courses.service';
 import { SummaryPipe } from './summary.pipe';
 
 import { InputFormatDirective } from './input-format.directive';
+import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { InputFormatDirective } from './input-format.directive';
     ContactFormComponent,
     SignupFormComponent,
     SummaryPipe,
-    InputFormatDirective
+    InputFormatDirective,
+    NewCourseFormComponent
   ],
   imports: [
     BrowserModule,
