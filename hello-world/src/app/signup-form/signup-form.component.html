@@ -1,6 +1,6 @@
 <form [formGroup]="form">
     <div class="form-group">
-        <label for="username">Username</label>
+        <label for="username">Username <span *ngIf="username?.pending" class="spinner-border spinner-border-sm text-primary" role="status"> </span></label>
         <input
             formControlName="username"
             id="username" 
