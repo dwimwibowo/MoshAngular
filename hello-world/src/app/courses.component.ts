@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Courses, CoursesService } from './courses.service';
+import { Courses, CoursesService } from './services/courses.service';
 
 @Component({
     selector: 'courses',
@@ -11,7 +11,6 @@ export class CoursesComponent {
     title: string = "List of courses";
     courses: Courses[] = [];
     viewMode: string = "";
-    service: CoursesService;
     canSave: boolean = true;
 
     task = {
@@ -22,8 +21,8 @@ export class CoursesComponent {
         }
     }
 
-    constructor(service: CoursesService) {
-        this.service = service;
+    constructor(private service: CoursesService) {
+        
     }
 
     getTitle() {

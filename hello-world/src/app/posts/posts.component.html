@@ -1,0 +1,30 @@
+<input
+    type="text"
+    class="form-control"
+    #title
+    (keyup.enter)="createPost(title)"
+    >
+
+<ul class="list-group">
+    <li
+        class="list-group-item"
+        *ngFor="let post of posts; index as i"
+        >
+
+        <div class="btn-group" role="group">
+            <button
+                class="btn btn-primary btn-sm"
+                title="Update"
+                (click)="updatePost(post)"
+            ><i class="bi bi-pencil-square"></i></button>
+
+            <button
+                class="btn btn-danger btn-sm"
+                title="Delete"
+                (click)="deletePost(post)"
+            ><i class="bi bi-trash"></i></button>
+        </div>
+
+        {{ i + " - " + post.id + " - " + post.title }}
+    </li>
+</ul>
