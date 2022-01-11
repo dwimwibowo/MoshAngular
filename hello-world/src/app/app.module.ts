@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,9 +16,10 @@ import { PostsComponent } from './posts/posts.component';
 import { CoursesService } from './services/courses.service';
 import { PostService } from './services/post.service';
 
-import { SummaryPipe } from './summary.pipe';
+import { SummaryPipe } from './common/pipes/summary.pipe';
 
-import { InputFormatDirective } from './input-format.directive';
+import { InputFormatDirective } from './common/directives/input-format.directive';
+import { AppErrorHandler } from './common/errors/app-error-handler';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { InputFormatDirective } from './input-format.directive';
   ],
   providers: [
     CoursesService,
-    PostService
+    PostService,
+    { provide: ErrorHandler, useClass: AppErrorHandler}
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable, ErrorHandler } from '@angular/core';
+import { catchError, throwError, Observable } from 'rxjs';
+import { AppError } from '../common/errors/app-error';
+import { BadInputError } from '../common/errors/bad-input-error';
+import { NotFoundError } from '../common/errors/not-found-error';
 
 @Injectable({
   providedIn: 'root'
@@ -12,19 +15,42 @@ export class PostService {
 
   }
 
-  getPost(){
-    return this.http.get(this.url);
+  getAll(){
+    return this.http.get(this.url)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  createPost(data: any){
-    return this.http.post(this.url, JSON.stringify(data));
+  create(resource: any){
+    return this.http.post(this.url, JSON.stringify(resource))
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  updatePost(data: any){
-    return this.http.patch(this.url + '/' + data.id, JSON.stringify({ isRead: true }))
+  update(resource: any){
+    return this.http.patch(this.url + '/' + resource.id, JSON.stringify({ isRead: true }))
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  deletePost(data: any){
-    return this.http.delete(this.url + '/' + data.id);
+  delete(id: string){
+    return this.http.delete(this.url + '/' + id)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  private handleError(error: Response){
+    console.log('Handling error locally and rethrowing it...', error);
+
+    if(error.status === 400)
+      return throwError(new BadInputError());
+    else if(error.status === 404)
+      return throwError(new NotFoundError());
+    else
+      return throwError(new AppError(error.json()));
   }
 }
