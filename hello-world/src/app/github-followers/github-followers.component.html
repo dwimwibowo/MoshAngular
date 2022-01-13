@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="card card-gray p-0">
+            <div class="card-header">
+                <h3 class="card-title"><i class="bi bi-people-fill"></i> Followers</h3>
+            </div>
+        
+            <div class="card-body">
+                    <div class="row row-cols-1 row-cols-md-5 g-4">
+        
+                        <div *ngFor="let follower of followers">
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="{{ follower.avatar_url }}" class="card-img-top p-1" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <a [routerLink]="['/followers', follower.id, follower.login]" class="link-primary text-monospace text-decoration-none">{{ follower.login }}</a>
+                                        </h5>
+                                        <p class="card-text">
+                                            <a href="follower.html_url" class="link-success text-decoration-none">{{ follower.html_url }}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+        
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
